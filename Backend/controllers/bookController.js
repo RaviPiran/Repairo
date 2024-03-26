@@ -3,8 +3,8 @@ import Book from '../models/bookModel.js';
 import mongoose from 'mongoose';
 import twilio from 'twilio';
 import Mechanic from '../models/mechanicModel.js';
-
-
+import dotenv from 'dotenv';
+dotenv.config();
 // @desc Create a new mechanic
 // route POST /api/mechanic/create shop
 // @access Public 
