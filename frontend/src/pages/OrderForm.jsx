@@ -31,7 +31,7 @@ function OrderForm() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/order/createorder', formData);
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/order/createorder`, formData);
       console.log(response.data);
       // Show success message using Toastify
 

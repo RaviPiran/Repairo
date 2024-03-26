@@ -13,7 +13,7 @@ const MechanicList = () => {
   useEffect(() => {
     const fetchMechanics = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/mechanic/getmechanic',{ withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/getmechanic`,{ withCredentials: true });
         setMechanics(response.data);
       } catch (error) {
         console.error('Error fetching mechanics:', error);
@@ -25,7 +25,7 @@ const MechanicList = () => {
 
   const handleEdit = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/mechanic/${id}`,);
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/${id}`,);
       setEditingMechanic(response.data);
       setShowModal(true);
     } catch (error) {
@@ -40,9 +40,9 @@ const MechanicList = () => {
 
   const handleEditSubmit = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/mechanic/${editingMechanic._id}`, editingMechanic);
+      await axios.put(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/${editingMechanic._id}`, editingMechanic);
       // Refresh the mechanic list after update
-      const response = await axios.get('http://localhost:5000/api/mechanic/getmechanic');
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/getmechanic`);
       setMechanics(response.data);
       setEditingMechanic(null); // Clear the editing state
       setShowModal(false);
@@ -53,7 +53,7 @@ const MechanicList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/mechanic/${id}`);
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/${id}`);
       setMechanics(prevMechanics => prevMechanics.filter(mechanic => mechanic._id !== id));
     } catch (error) {
       console.error('Error deleting mechanic:', error);
@@ -62,7 +62,7 @@ const MechanicList = () => {
 
   const handleVerify = async (id) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/mechanic/${id}`, { ispost: true });
+      const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/${id}`, { ispost: true });
       // Update mechanic list with the updated mechanic
       setMechanics(mechanics.map(mechanic => mechanic._id === id ? response.data : mechanic));
     } catch (error) {

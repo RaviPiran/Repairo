@@ -6,7 +6,7 @@ function MechanicDetails() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/mechanic/${id}`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setMechanic(data);

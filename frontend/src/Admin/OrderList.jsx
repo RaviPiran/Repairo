@@ -9,7 +9,7 @@ const OrderList = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/order/getbooks');
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/order/getbooks`);
         setBooks(response.data);
       } catch (error) {
         console.error('Error fetching books:', error);
@@ -24,7 +24,7 @@ const OrderList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/order/${id}`);
+      await axios.delete(`${process.env.REACT_APP_SERVER_URL}/api/order/${id}`);
       // If delete is successful, remove the deleted book from the state
       setBooks(books.filter(book => book._id !== id));
       console.log('Book deleted:', id);

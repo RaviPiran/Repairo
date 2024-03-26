@@ -20,7 +20,7 @@ function Contact() {
     setSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/users/email', {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

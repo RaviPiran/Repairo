@@ -76,7 +76,7 @@ const MechanicForm = () => {
     formData.append('ShopPhoto', ShopPhoto);
 
     try {
-      const response = await fetch('http://localhost:5000/api/mechanic/createmechanic', {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/createmechanic`, {
         method: 'POST',
         body: formData,
       });

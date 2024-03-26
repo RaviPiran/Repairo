@@ -9,7 +9,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/users/all-users`, { withCredentials: true });
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/users/all-users`, { withCredentials: true });
         setUsers(response.data);
         setLoading(false);
       } catch (error) {
@@ -27,7 +27,7 @@ const UserList = () => {
 
   const handleEnableDisable = async (id, isActive) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/users/${id}/toggle`, null);
+      const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api/users/${id}/toggle`, null);
       const updatedUser = response.data.data;
       setUsers(users.map((user) => (user._id === id ? updatedUser : user)));
       console.log(`User ${isActive ? 'disabled' : 'enabled'}:`, id);

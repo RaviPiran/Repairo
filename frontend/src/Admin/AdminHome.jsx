@@ -10,7 +10,7 @@ function AdminHome() {
 
   useEffect(() => {
     // Fetch user data
-    axios.get('http://localhost:5000/api/users/all-users',{ withCredentials: true })
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/users/all-users`,{ withCredentials: true })
       .then(response => {
         setUserData(response.data);
       })
@@ -19,7 +19,7 @@ function AdminHome() {
       });
 
     // Fetch mechanic data
-    axios.get('http://localhost:5000/api/mechanic/getmechanic')
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/getmechanic`)
       .then(response => {
         setMechanicData(response.data);
       })
@@ -28,7 +28,7 @@ function AdminHome() {
       });
 
     // Fetch order data
-    axios.get('http://localhost:5000/api/order/getbooks')
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/order/getbooks`)
       .then(response => {
         setOrderData(response.data);
       })

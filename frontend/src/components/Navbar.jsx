@@ -10,7 +10,7 @@ function Navbar() {
   const handleLogout = () => {
     // Perform logout actions (remove token, etc.)
     // Send a POST request to the server-side logout endpoint
-    fetch('http://localhost:5000/api/users/logout', {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/logout`, {
       method: 'POST',
       credentials: 'include'
     })

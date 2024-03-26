@@ -8,7 +8,7 @@ function Filter() {
   const [itemsPerPage] = useState(10); // Adjust the number of items per page
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/mechanic/getmechanics")
+    fetch(`${process.env.REACT_APP_SERVER_URL}/api/mechanic/getmechanics`)
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data)) {
