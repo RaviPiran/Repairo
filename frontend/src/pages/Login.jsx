@@ -76,7 +76,7 @@ const Login = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/users/login",
+        `${process.env.REACT_APP_SERVER.URL}/api/users/login`,
         {
           ...inputValue,
         },
