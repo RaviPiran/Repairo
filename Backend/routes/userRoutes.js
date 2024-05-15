@@ -21,7 +21,7 @@ router
 .route('/profile')
 .get(protect, getUserProfile)
 .put(protect, updateUserProfile);
-router.get('/all-users',protect,isAdmin,getallUser);
+router.get('/all-users',getallUser);
 router.get('/:id', isAdmin, getaUser);
 router.put('/:id/toggle', toggleUserStatus);
 

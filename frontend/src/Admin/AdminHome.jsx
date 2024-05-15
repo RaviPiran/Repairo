@@ -10,7 +10,7 @@ function AdminHome() {
 
   useEffect(() => {
     // Fetch user data
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/users/all-users`,{ withCredentials: true })
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/users/all-users`)
       .then(response => {
         setUserData(response.data);
       })
